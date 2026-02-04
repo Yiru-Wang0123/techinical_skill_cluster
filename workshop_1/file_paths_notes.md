@@ -30,70 +30,56 @@
 ### Check your working directory
 ```python
 import os
-print(os.getcwd())    # Shows current folder
+print(os.getcwd())    # shows current folder
 ```
 
 ### Import data
 ```python
 import pandas as pd
 
-# Option 1: Forward slashes (recommended, works everywhere)
+# option 1: forward slashes (recommended, works everywhere)
 df = pd.read_csv("C:/Users/name/Documents/data.csv")
 
-# Option 2: Raw string with backslashes (Windows only)
+# option 2: raw string with backslashes (windows only)
 df = pd.read_csv(r"C:\Users\name\Documents\data.csv")
 
-# Option 3: Relative path (file in working directory)
+# option 3: relative path (file in working directory)
 df = pd.read_csv("data.csv")
 ```
 
 ### View your data
 ```python
-df.head()        # First 5 rows
+df.head()        # first 5 rows
 df.shape         # (rows, columns)
-df.columns       # Column names
+df.columns       # column names
 ```
 
 ## 4. R
 
 ### Check your working directory
 ```r
-getwd()              # Shows current folder
-setwd("C:/path")     # Change working directory
+getwd()              # shows current folder
+setwd("C:/path")     # change working directory
 ```
 
 ### Import data
 ```r
-# Option 1: Forward slashes (recommended, works everywhere)
+# option 1: forward slashes (recommended, works everywhere)
 df <- read.csv("C:/Users/name/Documents/data.csv")
 
-# Option 2: Relative path (file in working directory)
+# option 2: relative path (file in working directory)
 df <- read.csv("data.csv")
 ```
 
 ### View your data
 ```r
-head(df)         # First 6 rows
-dim(df)          # Rows and columns
-names(df)        # Column names
-View(df)         # Open in spreadsheet viewer (RStudio)
+head(df)         # first 6 rows
+dim(df)          # rows and columns
+names(df)        # column names
+View(df)         # open in spreadsheet viewer (RStudio)
 ```
 
-## 5. Common Mistakes to Avoid
-
-+------------------------+-------------------------------+----------------------------------------+
-| Mistake                | Problem                       | Fix                                    |
-+========================+===============================+========================================+
-| Forgetting quotes      | `read.csv(data.csv)`          | Add quotes: `"data.csv"`               |
-+------------------------+-------------------------------+----------------------------------------+
-| Backslashes in Python  | `\U` and `\n` are escape codes| Use `/` or raw string `r"..."`         |
-+------------------------+-------------------------------+----------------------------------------+
-| File not found         | Wrong working directory       | Check with `getwd()` or `os.getcwd()`  |
-+------------------------+-------------------------------+----------------------------------------+
-| Typos in path          | Misspelled folder name        | Copy path directly from file explorer  |
-+------------------------+-------------------------------+----------------------------------------+
-
-## 6. Absolute vs. Relative Paths
+## 5. Absolute vs. Relative Paths
 
 +----------+------------------------------------+----------------------------------+
 | Type     | Example                            | When to Use                      |
@@ -157,23 +143,47 @@ If your **working directory** is `my_project/code/helpers/`, accessing `survey.c
    +----- Second `..` goes from code/ up to my_project/
 ```
 
-### Python & R Examples
+### Examples
+
+###### python 
 
 ```python
-# Python - from code/ folder, read raw data
+# from code/ folder, read raw data
 df = pd.read_csv("../data/raw/survey.csv")
 
-# Save cleaned data
+# ___some data cleaning process____ #
+
+# save cleaned data
 df.to_csv("../data/cleaned/survey_clean.csv", index=False)
 ```
 
-```r
-# R - from code/ folder, read raw data
+
+###### R
+
+``` R
+# from code/ folder, read raw data
 df <- read.csv("../data/raw/survey.csv")
 
-# Save cleaned data
+# ____some data cleaning process____ #
+
+# save cleaned data
 write.csv(df, "../data/cleaned/survey_clean.csv", row.names = FALSE)
 ```
+
+## 6. Common Mistakes to Avoid
+
++------------------------+-------------------------------+----------------------------------------+
+| Mistake                | Problem                       | Fix                                    |
++========================+===============================+========================================+
+| Forgetting quotes      | `read.csv(data.csv)`          | Add quotes: `"data.csv"`               |
++------------------------+-------------------------------+----------------------------------------+
+| Backslashes in Python  | `\U` and `\n` are escape codes| Use `/` or raw string `r"..."`         |
++------------------------+-------------------------------+----------------------------------------+
+| File not found         | Wrong working directory       | Check with `getwd()` or `os.getcwd()`  |
++------------------------+-------------------------------+----------------------------------------+
+| Typos in path          | Misspelled folder name        | Copy path directly from file explorer  |
++------------------------+-------------------------------+----------------------------------------+
+
 
 ## Quick Reference
 
